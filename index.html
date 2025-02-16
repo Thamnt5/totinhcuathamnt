@@ -1,0 +1,90 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tỏ tình</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #agree {
+            background-color: #ff4d79;
+            color: white;
+            border-radius: 10px;
+        }
+        #disagree {
+            background-color: #ccc;
+            color: black;
+            border-radius: 10px;
+        }
+        /* Style cho popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff4d79;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Anh có rảnh vào chủ nhật này không? ❤️ 🥰</h2>
+    <button id="agree" class="btn" onclick="acceptLove()">Có chứ</button>
+    <button id="disagree" class="btn" onclick="refuseLove()">Không rảnh</button>
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <p>Tuyệt vời! Mình cùng đi chơi nhé ❤️</p>
+        <button onclick="closePopup()">OK nhaa 😘</button>
+    </div>
+    <script>
+        let agreeBtn = document.getElementById("agree");
+        let disagreeBtn = document.getElementById("disagree");
+        let popup = document.getElementById("popup");
+        let disagreeCount = 0;
+        function acceptLove() {
+            popup.style.display = "block"; // Hiện popup
+        }
+        function closePopup() {
+            popup.style.display = "none"; // Ẩn popup
+        }
+        function refuseLove() {
+            let messages = [
+                "Em sẽ buồn đấy 😢",
+                "Em buồn 😭",
+                "Em buồn lắm 😔",
+                "Em buồn mà hụ hụ🥺"
+            ];
+            // Cập nhật text theo thứ tự rồi lặp lại
+            disagreeBtn.innerText = messages[disagreeCount % messages.length];
+            // Tăng kích thước nút "Có chứ"
+            agreeBtn.style.fontSize = (20 + disagreeCount * 5) + "px";
+            // Tăng biến đếm
+            disagreeCount++;
+        }
+    </script>
+</body>
+</html>
